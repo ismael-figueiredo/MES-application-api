@@ -1,23 +1,27 @@
 {
-  "name": "api-mes",
+  "name": "03-api-solid",
   "version": "1.0.0",
-  "description": "",
+  "description": "GymPass style app.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "build":"tsup src --out-dir build",
-    "start":"node build/server.js"
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "20.13.0",
-    "tsx": "4.14.0",
-    "tup": "0.0.0",
-    "typescript": "5.4.5"
+    "@rocketseat/eslint-config": "1.2.0",
+    "@types/node": "18.14.1",
+    "eslint": "8.34.0",
+    "tsup": "6.6.3",
+    "tsx": "3.12.3",
+    "typescript": "4.9.5"
   },
   "dependencies": {
-    "fastify": "4.27.0"
+    "dotenv": "16.0.3",
+    "fastify": "4.13.0",
+    "zod": "3.20.6"
   }
 }
