@@ -1,0 +1,23 @@
+{
+  "name": "api-mes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build":"tsup src --out-dir build",
+    "start":"node build/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "20.13.0",
+    "tsx": "4.14.0",
+    "tup": "0.0.0",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "fastify": "4.27.0"
+  }
+}
