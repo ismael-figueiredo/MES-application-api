@@ -1,13 +1,15 @@
 {
-  "name": "03-api-solid",
+  "name": "mes-application-api",
   "version": "1.0.0",
-  "description": "GymPass style app.",
+  "description": "Mes application api.",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
-    "test": "vitest "
+    "test": "vitest ",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "1.2.0",
     "@types/node": "18.14.1",
+    "@vitest/coverage-v8": "1.6.0",
     "eslint": "8.34.0",
     "prisma": "5.15.0",
     "tsup": "6.6.3",
@@ -26,6 +29,7 @@
   "dependencies": {
     "@prisma/client": "5.15.0",
     "@types/bcryptjs": "2.4.6",
+    "@vitest/ui": "1.6.0",
     "bcryptjs": "2.4.3",
     "dotenv": "16.0.3",
     "fastify": "4.13.0",
