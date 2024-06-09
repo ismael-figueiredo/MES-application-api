@@ -2,8 +2,9 @@
 
 ## Entidades e casos de uso
 
-#### Usuário
-  - [ ] Criar
+#### Usuários
+  - [x] Criar
+  - [ ] visualizar perfil 
   - [ ] Atualizar
   - [ ] Listar
   - [ ] deletar
@@ -51,9 +52,10 @@
   - [ ] Atualizar
   - [ ] Deletar
 
-- [ ] **Lote de Produção**
+### Lote de Produção
   - [ ] Listar
-- [ ] **Inspeção de Qualidade**
+
+### Inspeção de Qualidade
   - [ ] Registrar inspeção
   - [ ] Atualizar resultados de inspeção
 
