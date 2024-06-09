@@ -1,5 +1,6 @@
 import { hash } from 'bcryptjs'
 import { UsersRepository } from '../repositories/users-repository'
+import { UserAlreadyExistsError } from '@/errors/user-alreadexistis-error'
 
 interface UserRegisterUseCaseRequest {
   name: string
@@ -18,9 +19,9 @@ export class RegisterUserUseCase {
   }: UserRegisterUseCaseRequest) {
     const password_hash = await hash(password, 6)
 
-    const userWithSameEmail = await this.userRepository.findByName(name)
-    if (userWithSameEmail) {
-      throw new Error('Name already exists.')
+    const userWithSameName = await this.userRepository.findByName(name)
+    if (userWithSameName) {
+      throw new UserAlreadyExistsError()
     }
 
     await this.userRepository.create({

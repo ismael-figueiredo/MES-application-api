@@ -5,7 +5,7 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "name": "Ismael Figueiredo 5",
+  "name": "Ismael Figueiredo 33",
   "password": "123456"
 }
 
