@@ -13,14 +13,14 @@ export class InMemoryUsersRepository implements UsersRepository {
     return user
   }
 
-  async create(data: Prisma.UserCreateInput) {
+  async create(data: Prisma.UserUncheckedCreateInput) {
     const user = {
-      id: 'data.id',
+      id: 'User-id',
       name: data.name,
-      status: data.status,
+      status: data.status || 'ACTIVE',
       avatar_url: data.avatar_url || null,
       password_hash: data.password_hash,
-      sector_id: data.sector.connect?.id || 1,
+      sector_id: 1,
       created_at: new Date(),
       updated_at: new Date(),
     }

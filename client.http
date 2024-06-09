@@ -5,8 +5,16 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "name": "Ismael Figueiredo 33",
+  "name": "Ismael Figueiredo",
   "password": "123456"
 }
 
 ###
+# @name create_session
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "name": "Ismael Figueiredo",
+  "password": "123456"
+}

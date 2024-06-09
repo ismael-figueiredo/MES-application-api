@@ -32,7 +32,7 @@ export class RegisterUserUseCase {
     const user = await this.userRepository.create({
       name,
       status,
-      sector: { connect: { id: sector_id } },
+      sector_id,
       password_hash,
     })
     return { user }

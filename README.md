@@ -1,4 +1,4 @@
-# Projeto API MES - DDD
+# Projeto API MES - SOLID
 
 ## Entidades e casos de uso
 
