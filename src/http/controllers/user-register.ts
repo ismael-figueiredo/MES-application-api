@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { UserAlreadyExistsError } from '@/errors/user-alreadexistis-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-alread-existis-error'
 import { makeRegisterUseCase } from '@/use-cases/factories/make-register-use-case'
 
 export async function userRegister(
@@ -27,7 +27,7 @@ export async function userRegister(
       sector_id,
     })
   } catch (err) {
-    if (err instanceof UserAlreadyExistsError) {
+    if (err instanceof ResourceAlreadyExistsError) {
       return reply.status(409).send({ message: err.message })
     }
 

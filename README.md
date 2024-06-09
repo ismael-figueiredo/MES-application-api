@@ -4,20 +4,20 @@
 
 #### Usuários
   - [x] Criar
-  - [ ] visualizar perfil 
+  - [x] visualizar perfil 
   - [ ] Atualizar
   - [ ] Listar
   - [ ] deletar
 
-#### Entrada Produção/Parada/Setup
-  - [ ] Criar
-  - [ ] Encerrar
+#### Setor
+  - [x] Criar
   - [ ] Listar
   - [ ] Atualizar
   - [ ] Deletar
 
-#### Setor
+#### Entrada Produção/Parada/Setup
   - [ ] Criar
+  - [ ] Encerrar
   - [ ] Listar
   - [ ] Atualizar
   - [ ] Deletar
