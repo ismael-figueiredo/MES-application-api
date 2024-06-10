@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { ResourceAlreadyExistsError } from '@/errors/resource-alread-existis-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 import { makeRegisterUseCase } from '@/use-cases/factories/make-register-use-case'
 
 export async function userRegister(

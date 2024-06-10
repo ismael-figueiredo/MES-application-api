@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 
-import { CreateSectorUseCase } from './create-sector-usecase'
+import { CreateSectorUseCase } from './create-sector-use-case'
 import { InMemorySectorsRepository } from '@/repositories/in-memory/in-memory-sectors-repository'
-import { ResourceAlreadyExistsError } from '@/errors/resource-alread-existis-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
 let inMemorySectorsRepository: InMemorySectorsRepository
 let sut: CreateSectorUseCase

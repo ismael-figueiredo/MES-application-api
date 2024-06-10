@@ -2,7 +2,7 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { RegisterUserUseCase } from './register-user-use-case'
 import { compare } from 'bcryptjs'
-import { ResourceAlreadyExistsError } from '@/errors/resource-alread-existis-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
 let inMemoryUsersRepository: InMemoryUsersRepository
 let sut: RegisterUserUseCase
@@ -37,7 +37,7 @@ describe('Register User Use Case', () => {
     expect(isPasswordCorrectlyHashed).toBe(true)
   })
 
-  it('should not be able to registerwith same name', async () => {
+  it('should not be able to register with same name', async () => {
     await sut.execute({
       name: 'John Doe',
       password: '123456',

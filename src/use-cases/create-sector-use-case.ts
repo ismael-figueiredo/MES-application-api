@@ -1,6 +1,6 @@
 import { Sector } from '@prisma/client'
 import { SectorsRepository } from '@/repositories/sectors-repository'
-import { ResourceAlreadyExistsError } from '@/errors/resource-alread-existis-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
 interface CreateSectorUseCaseRequest {
   name: string
