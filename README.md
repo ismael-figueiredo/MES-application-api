@@ -11,7 +11,7 @@
 
 #### Setor
   - [x] Criar
-  - [ ] Listar
+  - [x] Listar
   - [ ] Atualizar
   - [ ] Deletar
 
