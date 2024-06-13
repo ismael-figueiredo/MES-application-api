@@ -1,5 +1,6 @@
 import { Prisma, Sector } from '@prisma/client'
 import { SectorsRepository } from '../sectors-repository'
+import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 
 export class InMemorySectorsRepository implements SectorsRepository {
   public items: Sector[] = []
@@ -42,16 +43,11 @@ export class InMemorySectorsRepository implements SectorsRepository {
   }
 
   async update(id: number, data: Prisma.SectorUncheckedUpdateInput) {
-    this.items.map((sector) => {
-      if (sector.id === id) {
-        return { ...sector, ...data }
-      }
-      return sector
-    })
-    const updatedSector = this.items.find((sector) => sector.id === id)
-    if (!updatedSector) {
-      throw new Error('Sector not found')
+    const sector = this.items.find((sector) => sector.id === id)
+    if (!sector) {
+      throw new ResourceNotFoundError()
     }
-    return { id: updatedSector.id, name: updatedSector.name }
+    Object.assign(sector, data)
+    return sector
   }
 }
