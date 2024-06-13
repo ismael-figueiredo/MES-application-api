@@ -4,6 +4,15 @@ import { SectorsRepository } from '../sectors-repository'
 export class InMemorySectorsRepository implements SectorsRepository {
   public items: Sector[] = []
 
+  async findById(id: number) {
+    const sector = this.items.find((item) => item.id === id)
+
+    if (!sector) {
+      return null
+    }
+    return sector
+  }
+
   async searchMany(query: string, page: number) {
     return this.items
       .filter((item) => item.name.includes(query))
