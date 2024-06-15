@@ -4,16 +4,16 @@ import { hash } from 'bcryptjs'
 import { AuthenticateUseCase } from './authenticate-use-case'
 import { InvalidCredentialsError } from '@/errors/invalid-credentials-error'
 
-let usersRepository: InMemoryUsersRepository
+let inMemoryRepository: InMemoryUsersRepository
 let sut: AuthenticateUseCase
 
 describe('Authenticate Use Case', () => {
   beforeEach(() => {
-    usersRepository = new InMemoryUsersRepository()
-    sut = new AuthenticateUseCase(usersRepository)
+    inMemoryRepository = new InMemoryUsersRepository()
+    sut = new AuthenticateUseCase(inMemoryRepository)
   })
   it('should not authenticate with wrong password', async () => {
-    await usersRepository.create({
+    await inMemoryRepository.create({
       name: 'John Doe',
       password_hash: await hash('123456', 6),
       status: 'ACTIVE',
@@ -28,7 +28,7 @@ describe('Authenticate Use Case', () => {
   })
 
   it('should not be able to authenticate with wrong username', async () => {
-    await usersRepository.create({
+    await inMemoryRepository.create({
       name: 'John Doe',
       password_hash: await hash('123456', 6),
       status: 'ACTIVE',

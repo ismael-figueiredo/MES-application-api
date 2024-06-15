@@ -2,17 +2,17 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemorySectorsRepository } from '@/repositories/in-memory/in-memory-sectors-repository'
 import { SearchSectorUseCase } from './search-sector-use-case'
 
-let sectorsRepository: InMemorySectorsRepository
+let inMemoryRepository: InMemorySectorsRepository
 let sut: SearchSectorUseCase
 
 describe('search sector Use Case', () => {
   beforeEach(() => {
-    sectorsRepository = new InMemorySectorsRepository()
-    sut = new SearchSectorUseCase(sectorsRepository)
+    inMemoryRepository = new InMemorySectorsRepository()
+    sut = new SearchSectorUseCase(inMemoryRepository)
   })
 
   it('should be able to list all sectors', async () => {
-    sectorsRepository.create({
+    inMemoryRepository.create({
       name: 'admin',
     })
 
@@ -25,9 +25,9 @@ describe('search sector Use Case', () => {
   })
 
   it('should filter sectors based on the provided query', async () => {
-    await sectorsRepository.create({ name: 'administration' })
-    await sectorsRepository.create({ name: 'finance' })
-    await sectorsRepository.create({ name: 'marketing' })
+    await inMemoryRepository.create({ name: 'administration' })
+    await inMemoryRepository.create({ name: 'finance' })
+    await inMemoryRepository.create({ name: 'marketing' })
 
     const result = await sut.execute({ query: 'fin', page: 1 })
 
@@ -36,7 +36,7 @@ describe('search sector Use Case', () => {
 
   it('should paginate the sectors correctly with 20 items per page', async () => {
     for (let i = 0; i < 25; i++) {
-      await sectorsRepository.create({ name: `sector${i}` })
+      await inMemoryRepository.create({ name: `sector${i}` })
     }
 
     const page1 = await sut.execute({ query: '', page: 1 })

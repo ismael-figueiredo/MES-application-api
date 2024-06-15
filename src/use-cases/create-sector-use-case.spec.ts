@@ -4,13 +4,13 @@ import { CreateSectorUseCase } from './create-sector-use-case'
 import { InMemorySectorsRepository } from '@/repositories/in-memory/in-memory-sectors-repository'
 import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
-let inMemorySectorsRepository: InMemorySectorsRepository
+let inMemoryRepository: InMemorySectorsRepository
 let sut: CreateSectorUseCase
 
 describe('Create sector Use Case', () => {
   beforeEach(() => {
-    inMemorySectorsRepository = new InMemorySectorsRepository()
-    sut = new CreateSectorUseCase(inMemorySectorsRepository)
+    inMemoryRepository = new InMemorySectorsRepository()
+    sut = new CreateSectorUseCase(inMemoryRepository)
   })
 
   it('should be able to create a new sector', async () => {

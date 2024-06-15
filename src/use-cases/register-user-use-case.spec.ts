@@ -4,13 +4,13 @@ import { RegisterUserUseCase } from './register-user-use-case'
 import { compare } from 'bcryptjs'
 import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
-let inMemoryUsersRepository: InMemoryUsersRepository
+let inMemoryRepository: InMemoryUsersRepository
 let sut: RegisterUserUseCase
 
 describe('Register User Use Case', () => {
   beforeEach(() => {
-    inMemoryUsersRepository = new InMemoryUsersRepository()
-    sut = new RegisterUserUseCase(inMemoryUsersRepository)
+    inMemoryRepository = new InMemoryUsersRepository()
+    sut = new RegisterUserUseCase(inMemoryRepository)
   })
 
   it('should be able to register', async () => {

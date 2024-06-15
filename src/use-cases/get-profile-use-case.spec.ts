@@ -4,16 +4,16 @@ import { hash } from 'bcryptjs'
 import { GetProfileUseCase } from './get-profile-use-case'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 
-let usersRepository: InMemoryUsersRepository
+let inMemoryRepository: InMemoryUsersRepository
 let sut: GetProfileUseCase
 
 describe('Get user profile Use Case', () => {
   beforeEach(() => {
-    usersRepository = new InMemoryUsersRepository()
-    sut = new GetProfileUseCase(usersRepository)
+    inMemoryRepository = new InMemoryUsersRepository()
+    sut = new GetProfileUseCase(inMemoryRepository)
   })
   it('should able to get user profile', async () => {
-    const createdUser = await usersRepository.create({
+    const createdUser = await inMemoryRepository.create({
       name: 'John Doe',
       password_hash: await hash('123456', 6),
       status: 'ACTIVE',
