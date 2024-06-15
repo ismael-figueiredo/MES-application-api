@@ -12,8 +12,8 @@
 #### Setor
   - [x] Criar
   - [x] Listar
-  - [ ] Atualizar
-  - [ ] Deletar
+  - [x] Atualizar
+  - [x] Deletar
 
 #### Entrada Produção/Parada/Setup
   - [ ] Criar
