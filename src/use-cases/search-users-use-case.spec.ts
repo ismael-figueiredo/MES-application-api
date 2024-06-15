@@ -11,7 +11,7 @@ describe('search user Use Case', () => {
     sut = new SearchUserUseCase(inMemoryRepository)
   })
 
-  it('should be able to list all sectors', async () => {
+  it('should be able to list sectors', async () => {
     inMemoryRepository.create({
       name: 'John Doe',
       password_hash: 'password_hash',

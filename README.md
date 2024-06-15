@@ -17,7 +17,7 @@
 
 #### Equipamento
   - [x] Criar
-  - [ ] Listar
+  - [x] Listar
   - [ ] Atualizar
   - [x] Deletar
 

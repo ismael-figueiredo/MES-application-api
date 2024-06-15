@@ -11,7 +11,7 @@ describe('search sector Use Case', () => {
     sut = new SearchSectorUseCase(inMemoryRepository)
   })
 
-  it('should be able to list all sectors', async () => {
+  it('should be able to list sectors', async () => {
     inMemoryRepository.create({
       name: 'admin',
     })
