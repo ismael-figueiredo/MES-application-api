@@ -9,8 +9,8 @@ export class DeleteSectorUseCase {
   constructor(private sectorsRepository: SectorsRepository) {}
 
   async execute({ id }: DeleteSectorUseCaseRequest): Promise<void> {
-    const isSector = await this.sectorsRepository.findById(id)
-    if (!isSector) {
+    const doesSectorExist = await this.sectorsRepository.findById(id)
+    if (!doesSectorExist) {
       throw new ResourceNotFoundError()
     }
 

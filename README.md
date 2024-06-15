@@ -16,10 +16,10 @@
   - [x] Deletar
 
 #### Equipamento
-  - [ ] Criar
+  - [x] Criar
   - [ ] Listar
   - [ ] Atualizar
-  - [ ] Deletar
+  - [x] Deletar
 
 #### Entrada Produção/Parada/Setup
   - [ ] Criar

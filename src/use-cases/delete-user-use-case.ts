@@ -9,8 +9,8 @@ export class DeleteUserUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
   async execute({ id }: DeleteUserUseCaseRequest): Promise<void> {
-    const isUser = await this.usersRepository.findById(id)
-    if (!isUser) {
+    const doesUserExist = await this.usersRepository.findById(id)
+    if (!doesUserExist) {
       throw new ResourceNotFoundError()
     }
 
