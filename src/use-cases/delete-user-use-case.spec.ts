@@ -6,7 +6,7 @@ import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 let inMemoryRepository: InMemoryUsersRepository
 let sut: DeleteUserUseCase
 
-describe('Delete sector Use Case', () => {
+describe('Delete user Use Case', () => {
   beforeEach(() => {
     inMemoryRepository = new InMemoryUsersRepository()
     sut = new DeleteUserUseCase(inMemoryRepository)

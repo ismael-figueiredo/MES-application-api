@@ -1,5 +1,6 @@
 import { Prisma, User } from '@prisma/client'
 import { UsersRepository } from '../users-repository'
+import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 
 export class InMemoryUsersRepository implements UsersRepository {
   public items: User[] = []
@@ -39,5 +40,20 @@ export class InMemoryUsersRepository implements UsersRepository {
 
   async delete(id: string) {
     this.items = this.items.filter((item) => item.id !== id)
+  }
+
+  async searchMany(query: string, page: number) {
+    return this.items
+      .filter((item) => item.name.includes(query))
+      .slice((page - 1) * 20, page * 20)
+  }
+
+  async update(id: string, data: Prisma.UserUncheckedUpdateInput) {
+    const user = this.items.find((user) => user.id === id)
+    if (!user) {
+      throw new ResourceNotFoundError()
+    }
+    Object.assign(user, data)
+    return user
   }
 }
