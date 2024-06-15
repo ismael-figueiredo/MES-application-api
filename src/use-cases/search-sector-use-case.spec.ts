@@ -45,6 +45,7 @@ describe('search sector Use Case', () => {
     expect(page1.sector).toHaveLength(20)
     expect(page2.sector).toHaveLength(5)
     expect(page1.sector[0]).toEqual({ id: 1, name: 'sector0' })
+    expect(page1.sector[10]).toEqual({ id: 1, name: 'sector10' })
     expect(page2.sector[0]).toEqual({ id: 1, name: 'sector20' })
   })
 })

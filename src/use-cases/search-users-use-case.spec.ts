@@ -23,7 +23,7 @@ describe('search user Use Case', () => {
       query: 'John Doe',
       page: 1,
     })
-    console.log(users)
+
     expect(users.user[0]).contain({
       id: 'User-id',
       name: 'John Doe',
@@ -47,7 +47,7 @@ describe('search user Use Case', () => {
       sector_id: 1,
     })
     await inMemoryRepository.create({
-      name: 'Barbara Liskov',
+      name: 'Barbara Andrade',
       password_hash: 'password_hash',
       status: 'ACTIVE',
       sector_id: 1,
@@ -76,11 +76,10 @@ describe('search user Use Case', () => {
 
     const page1 = await sut.execute({ query: '', page: 1 })
     const page2 = await sut.execute({ query: '', page: 2 })
-    console.log(page1.user[0])
-
     expect(page1.user.length).toEqual(20)
     expect(page2.user.length).toEqual(5)
     expect(page1.user[0]).contain({ id: 'User-id', name: 'User0' })
+    expect(page1.user[10]).contain({ id: 'User-id', name: 'User10' })
     expect(page2.user[0]).contain({ id: 'User-id', name: 'User20' })
   })
 })
