@@ -5,9 +5,9 @@
 #### Usuários
   - [x] Criar
   - [x] visualizar perfil 
-  - [ ] Atualizar
-  - [ ] Listar
-  - [ ] deletar
+  - [x] Atualizar
+  - [x] Listar
+  - [x] deletar
 
 #### Setor
   - [x] Criar
@@ -15,15 +15,15 @@
   - [x] Atualizar
   - [x] Deletar
 
-#### Entrada Produção/Parada/Setup
+#### Equipamento
   - [ ] Criar
-  - [ ] Encerrar
   - [ ] Listar
   - [ ] Atualizar
   - [ ] Deletar
 
-#### Equipamento
+#### Entrada Produção/Parada/Setup
   - [ ] Criar
+  - [ ] Encerrar
   - [ ] Listar
   - [ ] Atualizar
   - [ ] Deletar
