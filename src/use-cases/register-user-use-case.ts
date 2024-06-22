@@ -7,7 +7,7 @@ interface RegisterUserUseCaseRequest {
   name: string
   status: 'ACTIVE' | 'INACTIVE'
   password: string
-  sector_id: number
+  sectorId: number
 }
 
 interface RegisterUserUseCaseResponse {
@@ -20,9 +20,9 @@ export class RegisterUserUseCase {
     name,
     password,
     status,
-    sector_id,
+    sectorId,
   }: RegisterUserUseCaseRequest): Promise<RegisterUserUseCaseResponse> {
-    const password_hash = await hash(password, 6)
+    const passwordHash = await hash(password, 6)
 
     const userWithSameName = await this.userRepository.findByName(name)
     if (userWithSameName) {
@@ -32,8 +32,8 @@ export class RegisterUserUseCase {
     const user = await this.userRepository.create({
       name,
       status,
-      sector_id,
-      password_hash,
+      sector_id: sectorId,
+      password_hash: passwordHash,
     })
     return { user }
   }

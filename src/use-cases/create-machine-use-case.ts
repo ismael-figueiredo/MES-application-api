@@ -4,7 +4,7 @@ import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-err
 
 interface CreateMachineUseCaseRequest {
   name: string
-  sector_id: number
+  sectorId: number
 }
 
 interface CreateMachineUseCaseResponse {
@@ -14,7 +14,7 @@ export class CreateMachineUseCase {
   constructor(private machinesRepository: MachinesRepository) {}
 
   async execute({
-    sector_id,
+    sectorId,
     name,
   }: CreateMachineUseCaseRequest): Promise<CreateMachineUseCaseResponse> {
     const machineWithSameName = await this.machinesRepository.findByName(name)
@@ -25,7 +25,7 @@ export class CreateMachineUseCase {
 
     const machine = await this.machinesRepository.create({
       name,
-      sector_id,
+      sector_id: sectorId,
     })
     return { machine }
   }

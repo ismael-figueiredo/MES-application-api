@@ -11,10 +11,10 @@ export async function userRegister(
     name: z.string(),
     password: z.string().min(5),
     status: z.enum(['ACTIVE', 'INACTIVE']).default('ACTIVE'),
-    sector_id: z.number().default(1),
+    sectorId: z.number().default(1),
   })
 
-  const { name, password, status, sector_id } = registerBodySchema.parse(
+  const { name, password, status, sectorId } = registerBodySchema.parse(
     request.body,
   )
   try {
@@ -24,7 +24,7 @@ export async function userRegister(
       name,
       password,
       status,
-      sector_id,
+      sectorId,
     })
   } catch (err) {
     if (err instanceof ResourceAlreadyExistsError) {

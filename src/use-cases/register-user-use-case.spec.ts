@@ -18,7 +18,7 @@ describe('Register User Use Case', () => {
       name: 'John Doe',
       password: '123456',
       status: 'ACTIVE',
-      sector_id: 1,
+      sectorId: 1,
     })
     expect(user.id).toEqual(expect.any(String))
   })
@@ -28,7 +28,7 @@ describe('Register User Use Case', () => {
       name: 'John Doe',
       password: '123456',
       status: 'ACTIVE',
-      sector_id: 1,
+      sectorId: 1,
     })
     const isPasswordCorrectlyHashed = await compare(
       '123456',
@@ -42,7 +42,7 @@ describe('Register User Use Case', () => {
       name: 'John Doe',
       password: '123456',
       status: 'ACTIVE',
-      sector_id: 1,
+      sectorId: 1,
     })
 
     expect(async () =>
@@ -50,7 +50,7 @@ describe('Register User Use Case', () => {
         name: 'John Doe',
         password: '123456',
         status: 'ACTIVE',
-        sector_id: 1,
+        sectorId: 1,
       }),
     ).rejects.toBeInstanceOf(ResourceAlreadyExistsError)
   })

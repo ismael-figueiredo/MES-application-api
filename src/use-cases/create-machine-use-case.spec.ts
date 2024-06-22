@@ -23,7 +23,7 @@ describe('Create Machine Use Case', () => {
 
     const { machine } = await sut.execute({
       name: 'lathe one',
-      sector_id: sector.id,
+      sectorId: sector.id,
     })
     expect(machine.id).toEqual(1)
     expect(machine.name).toEqual('lathe one')
@@ -35,13 +35,13 @@ describe('Create Machine Use Case', () => {
     })
     await sut.execute({
       name: 'lathe one',
-      sector_id: sector.id,
+      sectorId: sector.id,
     })
 
     expect(async () =>
       sut.execute({
         name: 'lathe one',
-        sector_id: sector.id,
+        sectorId: sector.id,
       }),
     ).rejects.toBeInstanceOf(ResourceAlreadyExistsError)
   })
