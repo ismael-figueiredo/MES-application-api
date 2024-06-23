@@ -1,34 +1,62 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { UpdateMachineUseCase } from './update-machine-use-case'
-import { InMemoryMachinesRepository } from '@/repositories/in-memory/in-memory-machines-repository'
+import { UpdateUserUseCase } from './update-user-use-case'
+import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
-let inMemoryRepository: InMemoryMachinesRepository
-let sut: UpdateMachineUseCase
+let inMemoryRepository: InMemoryUsersRepository
+let sut: UpdateUserUseCase
 
-describe('Update Machine Use Case', () => {
+describe('Update user Use Case', () => {
   beforeEach(() => {
-    inMemoryRepository = new InMemoryMachinesRepository()
-    sut = new UpdateMachineUseCase(inMemoryRepository)
+    inMemoryRepository = new InMemoryUsersRepository()
+    sut = new UpdateUserUseCase(inMemoryRepository)
   })
 
-  it('should update a machine successfully', async () => {
-    const machine = await inMemoryRepository.create({
+  it('should update a user successfully', async () => {
+    const User = await inMemoryRepository.create({
       name: 'Original Name',
       sector_id: 1,
+      password_hash: 'password_hash',
     })
-    const updatedMachine = await inMemoryRepository.update(machine.id, {
+    const updatedUser = await inMemoryRepository.update(User.id, {
       name: 'Updated Name',
+      avatar_url: 'https://example.com/avatar.png',
+      sector_id: 2,
+      status: 'INACTIVE',
     })
-    expect(updatedMachine.name).toEqual('Updated Name')
+    expect(updatedUser.name).toEqual('Updated Name')
+    expect(updatedUser.avatar_url).toEqual('https://example.com/avatar.png')
+    expect(updatedUser.sector_id).toEqual(2)
+    expect(updatedUser.status).toEqual('INACTIVE')
   })
 
   it('should throw error if user does not exist', async () => {
     await expect(
       sut.execute({
-        id: 12,
+        id: 'inexistent user-id',
         data: { name: 'inexistent user' },
       }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
+  })
+
+  it('It should not be possible to update a user with an already existing name.', async () => {
+    const user = await inMemoryRepository.create({
+      name: 'john doe',
+      sector_id: 1,
+      password_hash: 'password_hash',
+    })
+    await inMemoryRepository.create({
+      name: 'Isaac Newton',
+      sector_id: 1,
+      password_hash: 'password_hash',
+    })
+
+    expect(async () =>
+      sut.execute({
+        data: { name: 'Isaac Newton' },
+        id: user.id,
+      }),
+    ).rejects.toBeInstanceOf(ResourceAlreadyExistsError)
   })
 })

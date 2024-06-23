@@ -26,7 +26,7 @@ export class UpdateUserUseCase {
       const userSameWithName = await this.usersRepository.findByName(
         String(data.name),
       )
-      if (userSameWithName && userSameWithName.id !== id) {
+      if (userSameWithName) {
         throw new ResourceAlreadyExistsError()
       }
     }

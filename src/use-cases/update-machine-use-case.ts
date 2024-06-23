@@ -27,7 +27,7 @@ export class UpdateMachineUseCase {
       const machineWithSameName = await this.machinesRepository.findByName(
         String(data.name),
       )
-      if (machineWithSameName && machineWithSameName.id !== id) {
+      if (machineWithSameName) {
         throw new ResourceAlreadyExistsError()
       }
     }

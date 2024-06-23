@@ -27,7 +27,7 @@ export class UpdateSectorUseCase {
       const sectorWithSameName = await this.sectorsRepository.findByName(
         String(data.name),
       )
-      if (sectorWithSameName && sectorWithSameName.id) {
+      if (sectorWithSameName) {
         throw new ResourceAlreadyExistsError()
       }
     }
