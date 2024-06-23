@@ -1,6 +1,7 @@
 import { Prisma, Machine } from '@prisma/client'
 import { MachinesRepository } from '@/repositories/machines-repository'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
+import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
 interface UpdateMachineUseCaseRequest {
   id: number
@@ -20,6 +21,15 @@ export class UpdateMachineUseCase {
     const machineWithSameId = await this.machinesRepository.findById(id)
     if (!machineWithSameId) {
       throw new ResourceNotFoundError()
+    }
+
+    if (data.name) {
+      const machineWithSameName = await this.machinesRepository.findByName(
+        String(data.name),
+      )
+      if (machineWithSameName && machineWithSameName.id !== id) {
+        throw new ResourceAlreadyExistsError()
+      }
     }
 
     const machine = await this.machinesRepository.update(id, data)

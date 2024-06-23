@@ -18,7 +18,7 @@
 #### Equipamento
   - [x] Criar
   - [x] Listar
-  - [ ] Atualizar
+  - [x] Atualizar
   - [x] Deletar
 
 #### Entrada Produção/Parada/Setup

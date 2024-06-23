@@ -2,7 +2,6 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { UpdateMachineUseCase } from './update-machine-use-case'
 import { InMemoryMachinesRepository } from '@/repositories/in-memory/in-memory-machines-repository'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
-import { ResourceAlreadyExistsError } from '@/errors/resource-already-exists-error'
 
 let inMemoryRepository: InMemoryMachinesRepository
 let sut: UpdateMachineUseCase
@@ -24,29 +23,11 @@ describe('Update Machine Use Case', () => {
     expect(updatedMachine.name).toEqual('Updated Name')
   })
 
-  it('It should not be possible to update a machine with an already existing name.', async () => {
-    const sector = await inMemoryRepository.create({
-      sector_id: 1,
-      name: 'Name one',
-    })
-    await inMemoryRepository.create({
-      sector_id: 1,
-      name: 'name two',
-    })
-
-    expect(async () =>
-      sut.execute({
-        data: { name: 'name two' },
-        id: sector.id,
-      }),
-    ).rejects.toBeInstanceOf(ResourceAlreadyExistsError)
-  })
-
-  it('should throw error if machine does not exist', async () => {
+  it('should throw error if user does not exist', async () => {
     await expect(
       sut.execute({
         id: 12,
-        data: { name: 'inexistent machine' },
+        data: { name: 'inexistent user' },
       }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })

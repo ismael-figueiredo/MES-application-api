@@ -47,6 +47,7 @@ export class InMemorySectorsRepository implements SectorsRepository {
     if (!sector) {
       throw new ResourceNotFoundError()
     }
+
     Object.assign(sector, data)
     return sector
   }
