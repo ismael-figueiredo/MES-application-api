@@ -25,7 +25,7 @@ describe('Update Machine Use Case', () => {
   })
 
   it('It should not be possible to update a machine with an already existing name.', async () => {
-    const sector = await inMemoryRepository.create({
+    const machine = await inMemoryRepository.create({
       sector_id: 1,
       name: 'machine one',
     })
@@ -37,7 +37,7 @@ describe('Update Machine Use Case', () => {
     expect(async () =>
       sut.execute({
         data: { name: 'machine two' },
-        id: sector.id,
+        id: machine.id,
       }),
     ).rejects.toBeInstanceOf(ResourceAlreadyExistsError)
   })
