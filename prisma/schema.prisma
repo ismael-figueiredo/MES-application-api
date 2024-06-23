@@ -32,23 +32,39 @@ model Sector {
   @@map("sectors")
 }
 
-model Operation {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-
-  sector    Sector @relation(fields: [sector_id], references: [id])
-  sector_id Int
-
-  @@map("operations")
-}
-
 model Machine {
   id     Int     @id @default(autoincrement())
   name   String  @unique
   status String? @default("ACTIVE")
 
-  sector    Sector @relation(fields: [sector_id], references: [id])
-  sector_id Int
+  sector          Sector            @relation(fields: [sector_id], references: [id])
+  sector_id       Int
+  TimeOfOperation TimeOfOperation[]
 
   @@map("machines")
+}
+
+model Operation {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  sector          Sector            @relation(fields: [sector_id], references: [id])
+  sector_id       Int
+  TimeOfOperation TimeOfOperation[]
+
+  @@map("operations")
+}
+
+model TimeOfOperation {
+  id   Int    @id @default(autoincrement())
+  time String
+  item Int
+
+  operation    Operation @relation(fields: [operation_id], references: [id])
+  operation_id Int
+
+  machine    Machine @relation(fields: [machine_id], references: [id])
+  machine_id Int
+
+  @@map("times_of_operations")
 }
