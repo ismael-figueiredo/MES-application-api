@@ -29,9 +29,9 @@
   - [ ] Deletar
 
 #### Operação
-  - [ ] Criar
+  - [x] Criar
   - [ ] Listar
-  - [ ] Atualizar
+  - [x] Atualizar
   - [ ] Deletar
 
 #### Tempo de Operação
