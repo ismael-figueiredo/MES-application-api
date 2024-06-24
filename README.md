@@ -30,7 +30,7 @@
 
 #### Operação
   - [x] Criar
-  - [ ] Listar
+  - [x] Listar
   - [x] Atualizar
   - [x] Deletar
 
