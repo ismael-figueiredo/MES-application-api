@@ -37,7 +37,6 @@ export class InMemoryOperationsRepository implements OperationsRepository {
     const operation = {
       id: 1,
       name: data.name,
-      status: 'ACTIVE',
       sector_id: 1,
     }
     this.items.push(operation)
