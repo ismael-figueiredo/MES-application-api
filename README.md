@@ -32,7 +32,7 @@
   - [x] Criar
   - [ ] Listar
   - [x] Atualizar
-  - [ ] Deletar
+  - [x] Deletar
 
 #### Tempo de Operação
   - [ ] Criar
