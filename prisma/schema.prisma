@@ -68,3 +68,17 @@ model TimeOfOperation {
 
   @@map("times_of_operations")
 }
+
+model ReasonForStopping {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  @@map("reason_for_stopping")
+}
+
+model ReasonForScrap {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  @@map("reason_for_scrap")
+}

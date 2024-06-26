@@ -52,6 +52,18 @@
   - [ ] Atualizar
   - [ ] Deletar
 
+#### Motivo de não conformidade
+  - [ ] Criar
+  - [ ] Listar
+  - [ ] Atualizar
+  - [ ] Deletar
+  
+#### Motivo de parada
+  - [ ] Criar
+  - [ ] Listar
+  - [ ] Atualizar
+  - [ ] Deletar
+
 ### Lote de Produção
   - [ ] Listar
 
