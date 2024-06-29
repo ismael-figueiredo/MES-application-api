@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ADMIN
+  MANAGER
+  USER
+}
+
 model User {
   id            String   @id @default(uuid())
   name          String   @unique
@@ -15,6 +21,7 @@ model User {
   status        String?  @default("ACTIVE")
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
+  role          UserRole @default(USER)
 
   sector    Sector @relation(fields: [sector_id], references: [id])
   sector_id Int
