@@ -19,7 +19,6 @@ export class RegisterUserUseCase {
   async execute({
     name,
     password,
-    status,
     sectorId,
   }: RegisterUserUseCaseRequest): Promise<RegisterUserUseCaseResponse> {
     const passwordHash = await hash(password, 6)
@@ -31,7 +30,7 @@ export class RegisterUserUseCase {
 
     const user = await this.userRepository.create({
       name,
-      status,
+      status: 'ACTIVE',
       sector_id: sectorId,
       password_hash: passwordHash,
     })

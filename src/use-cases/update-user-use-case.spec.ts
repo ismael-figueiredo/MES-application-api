@@ -23,12 +23,12 @@ describe('Update user Use Case', () => {
       name: 'Updated Name',
       avatar_url: 'https://example.com/avatar.png',
       sector_id: 2,
-      status: 'INACTIVE',
+      status: 'DISABLED',
     })
     expect(updatedUser.name).toEqual('Updated Name')
     expect(updatedUser.avatar_url).toEqual('https://example.com/avatar.png')
     expect(updatedUser.sector_id).toEqual(2)
-    expect(updatedUser.status).toEqual('INACTIVE')
+    expect(updatedUser.status).toEqual('DISABLED')
   })
 
   it('should throw error if user does not exist', async () => {
