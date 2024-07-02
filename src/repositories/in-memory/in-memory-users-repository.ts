@@ -1,4 +1,4 @@
-import { Prisma, User } from '@prisma/client'
+import { Prisma, User, $Enums } from '@prisma/client'
 import { UsersRepository } from '../users-repository'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 
@@ -27,7 +27,8 @@ export class InMemoryUsersRepository implements UsersRepository {
     const user = {
       id: 'User-id',
       name: data.name,
-      status: data.status || 'ACTIVE',
+      status: $Enums.Status.ACTIVE,
+      role: $Enums.UserRole.ADMIN,
       avatar_url: data.avatar_url || null,
       password_hash: data.password_hash,
       sector_id: 1,

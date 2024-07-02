@@ -1,4 +1,4 @@
-import { Prisma, Sector } from '@prisma/client'
+import { $Enums, Prisma, Sector } from '@prisma/client'
 import { SectorsRepository } from '../sectors-repository'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 
@@ -37,6 +37,7 @@ export class InMemorySectorsRepository implements SectorsRepository {
     const sector = {
       id: 1,
       name: data.name,
+      status: $Enums.Status.ACTIVE,
     }
     this.items.push(sector)
     return sector

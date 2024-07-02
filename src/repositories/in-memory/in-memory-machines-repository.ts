@@ -1,4 +1,4 @@
-import { Prisma, Machine } from '@prisma/client'
+import { Prisma, Machine, $Enums } from '@prisma/client'
 import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 import { MachinesRepository } from '../machines-repository'
 
@@ -37,7 +37,7 @@ export class InMemoryMachinesRepository implements MachinesRepository {
     const machine = {
       id: 1,
       name: data.name,
-      status: 'ACTIVE',
+      status: $Enums.Status.ACTIVE,
       sector_id: 1,
     }
     this.items.push(machine)

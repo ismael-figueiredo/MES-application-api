@@ -21,7 +21,9 @@ describe('search sector Use Case', () => {
       page: 1,
     })
 
-    expect(sectors).toEqual({ sector: [{ id: 1, name: 'admin' }] })
+    expect(sectors).toEqual({
+      sector: [{ id: 1, name: 'admin', status: 'ACTIVE' }],
+    })
   })
 
   it('should filter sectors based on the provided query', async () => {
@@ -31,7 +33,9 @@ describe('search sector Use Case', () => {
 
     const result = await sut.execute({ query: 'fin', page: 1 })
 
-    expect(result.sector).toEqual([{ id: 1, name: 'finance' }])
+    expect(result.sector).toEqual([
+      { id: 1, name: 'finance', status: 'ACTIVE' },
+    ])
   })
 
   it('should paginate the sectors correctly with 20 items per page', async () => {
@@ -44,8 +48,20 @@ describe('search sector Use Case', () => {
 
     expect(page1.sector).toHaveLength(20)
     expect(page2.sector).toHaveLength(5)
-    expect(page1.sector[0]).toEqual({ id: 1, name: 'sector0' })
-    expect(page1.sector[10]).toEqual({ id: 1, name: 'sector10' })
-    expect(page2.sector[0]).toEqual({ id: 1, name: 'sector20' })
+    expect(page1.sector[0]).toEqual({
+      id: 1,
+      name: 'sector0',
+      status: 'ACTIVE',
+    })
+    expect(page1.sector[10]).toEqual({
+      id: 1,
+      name: 'sector10',
+      status: 'ACTIVE',
+    })
+    expect(page2.sector[0]).toEqual({
+      id: 1,
+      name: 'sector20',
+      status: 'ACTIVE',
+    })
   })
 })
