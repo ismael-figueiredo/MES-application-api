@@ -59,7 +59,7 @@
   - [ ] Deletar
   
 #### Motivo de parada
-  - [ ] Criar
+  - [X] Criar
   - [ ] Listar
   - [ ] Atualizar
   - [ ] Deletar
